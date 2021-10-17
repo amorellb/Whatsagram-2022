@@ -31,8 +31,17 @@ body {
   grid-template-rows: 0.1fr 2fr;
 }
 
-.day-msg {
-  align-items: center;
+.msg-date-container {
+  display: flex;
+  justify-content: center;
+}
+
+.msg-date {
+  background-color: var(--text-container-bkg-color);
+  width: 5rem;
+  text-align: center;
+  padding: 0.2rem;
+  border-radius: 10px;
 }
 
 .message-container {
@@ -43,7 +52,7 @@ body {
   align-items: flex-end;
 }
 
-p {
+.msg {
   background-color: var(--text-container-bkg-color);
   margin: 0.2rem;
   margin-right: 1rem;

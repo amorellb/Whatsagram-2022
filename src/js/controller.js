@@ -4,6 +4,7 @@ import keyboardEmojis from './views/keyboardEmojis.js';
 import messageView from './views/messageView.js';
 
 window.addEventListener('load', keyboardEmojis.renderIcon('emoji-icon'));
+window.addEventListener('load', messageView.renderDay());
 
 keyboardLetters.renderKeyboard(model.letterBtnValues);
 keyboardLetters.writeLettersToInput();
