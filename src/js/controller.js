@@ -1,13 +1,12 @@
 import * as model from './model.js';
 import keyboardLetters from './views/keyboardLetters.js';
 import keyboardEmojis from './views/keyboardEmojis.js';
+import messageView from './views/messageView.js';
 
 window.addEventListener('load', keyboardEmojis.renderIcon('emoji-icon'));
 
 keyboardLetters.renderKeyboard(model.letterBtnValues);
 keyboardLetters.writeLettersToInput();
-
-// keyboardEmojis.switchKbEmoji();
 
 const switchKbEmoji = function () {
   keyboardEmojis._iconContainer.addEventListener('click', e => {
@@ -25,3 +24,4 @@ const switchKbEmoji = function () {
 };
 
 switchKbEmoji();
+messageView.renderMessage();
