@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="src/css/index.css" />
 
     <!-- JS -->
-    <script type="module" defer src="src/js/index.js"></script>
+    <script type="module" defer src="src/js/controller.js"></script>
   </head>
   <body>
     <header>
-      <div class="header-container"></div>
+      <div class="header-container">
+        <img class="user-img" src="src/img/emoji-icon.png" alt="user img" />
+        <h2 class="user-name">John Smith Stevenson</h2>
+      </div>
     </header>
     <main>
       <!-- Message section -->
@@ -24,13 +27,13 @@
       <!-- Text section -->
       <section class="text-section">
         <div class="text-container">
-          <img
-            class="emoji-icon"
-            src="src/img/emoji-icon.png"
-            alt="emoji icon"
-          />
+          <div class="icon-container"></div>
           <input class="text-input" type="text" />
-          <img class="send-icon" src="src/img/send-icon.png" alt="send icon" />
+          <img
+            class="icon send-icon"
+            src="src/img/send-icon.png"
+            alt="send icon"
+          />
         </div>
       </section>
       <!-- Keyboard section -->

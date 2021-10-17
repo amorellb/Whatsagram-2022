@@ -5,22 +5,43 @@
   --button-color: aliceblue;
 }
 
+body {
+  margin: 0;
+}
+
 .header-container {
   background-color: var(--header-bkg-color);
   width: 100vw;
   height: 10vh;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  color: white;
+}
+
+.user-img {
+  width: 3rem;
+  height: 3rem;
 }
 
 .message-container {
+  background-image: url(https://images.unsplash.com/photo-1547623641-d2c56c03e2a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
   width: 100vw;
   height: 60vh;
-  background-image: url(https://images.unsplash.com/photo-1547623641-d2c56c03e2a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+  display: grid;
 }
 
 .text-container {
+  background-color: var(--text-container-bkg-color);
   width: 100vw;
   height: 5vh;
-  background-color: var(--text-container-bkg-color);
+
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
   display: flex;
   align-items: center;
 }
@@ -30,13 +51,10 @@
 }
 
 .keyboard-container {
+  background-color: var(--keyboard-container-bkg-color);
   width: 100vw;
   height: 25vh;
-  background-color: var(--keyboard-container-bkg-color);
-  /* display: grid;
-  grid-gap: 2px;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: 1fr 1fr 1fr 1fr; */
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -57,7 +75,8 @@
 }
 
 .emoji-icon,
-.send-icon {
+.send-icon,
+.keyboard-icon {
   width: 1.5rem;
   height: 1.5rem;
   padding-left: 1rem;
