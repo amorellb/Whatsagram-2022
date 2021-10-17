@@ -7,7 +7,7 @@ class MessageView {
     this._sendButton.addEventListener('click', e => {
       this._parentElement.insertAdjacentHTML(
         'beforeend',
-        `${this._textInput.value}`
+        `<p>${this._textInput.value}</p>`
       );
       this._textInput.value = '';
     });
