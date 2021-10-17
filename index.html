@@ -5,6 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whatsagram 2022</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/css/index.css" />
+
+    <!-- JS -->
+    <script type="module" defer src="src/js/index.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="header-container"></div>
+    </header>
+    <main>
+      <!-- Message section -->
+      <section class="message-section">
+        <div class="message-container"></div>
+      </section>
+      <!-- Text section -->
+      <section class="text-section">
+        <div class="text-container">
+          <img
+            class="emoji-icon"
+            src="src/img/emoji-icon.png"
+            alt="emoji icon"
+          />
+          <input class="text-input" type="text" />
+          <img class="send-icon" src="src/img/send-icon.png" alt="send icon" />
+        </div>
+      </section>
+      <!-- Keyboard section -->
+      <section class="keyboard-section">
+        <div class="keyboard-container"></div>
+      </section>
+    </main>
+  </body>
 </html>
