@@ -1,3 +1,5 @@
+import { months } from '../model.js';
+
 class MessageView {
   _parentElement = document.querySelector('.message-container');
   _daySection = document.querySelector('.msg-date-container');
@@ -6,9 +8,12 @@ class MessageView {
   _date = new Date();
 
   renderDay() {
+    console.log(this._date);
     this._daySection.insertAdjacentHTML(
       'afterbegin',
-      `<p class='msg-date'>${this._date.getDate()}/${this._date.getMonth()}/${this._date.getFullYear()}</p>`
+      `<p class='msg-date'>${
+        months[this._date.getMonth()]
+      } ${this._date.getDate()} ${this._date.getFullYear()}</p>`
     );
   }
 

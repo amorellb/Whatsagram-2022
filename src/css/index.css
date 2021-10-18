@@ -8,6 +8,8 @@
 
 body {
   margin: 0;
+  display: grid;
+  height: 100vh;
 }
 
 .header-container {
@@ -55,7 +57,7 @@ body {
 
 .message-container {
   width: 100vw;
-  height: 55vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
