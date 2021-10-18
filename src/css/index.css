@@ -3,6 +3,7 @@
   --text-container-bkg-color: #f1fcde;
   --keyboard-container-bkg-color: #faefe8;
   --button-color: aliceblue;
+  --text-input-border: #dfe1e5;
 }
 
 body {
@@ -12,17 +13,25 @@ body {
 .header-container {
   background-color: var(--header-bkg-color);
   width: 100vw;
-  height: 10vh;
+  height: 5vh;
 
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2fr 3fr;
   align-items: center;
-  color: white;
 }
 
 .user-img {
-  width: 3rem;
-  height: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+
+  justify-self: center;
+}
+
+.user-name {
+  margin: 0;
+  color: white;
+
+  justify-self: center;
 }
 
 .message-section {
@@ -46,7 +55,7 @@ body {
 
 .message-container {
   width: 100vw;
-  height: 60vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -75,6 +84,10 @@ body {
 }
 
 .text-input {
+  border: 1px solid var(--text-input-border);
+  border-radius: 15px;
+  height: 70%;
+
   flex-grow: 1;
 }
 
