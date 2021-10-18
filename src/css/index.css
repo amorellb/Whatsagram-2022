@@ -16,7 +16,7 @@ body {
 .header-container {
   background-color: var(--header-bkg-color);
   width: 100vw;
-  height: 5vh;
+  height: 8vh;
 
   display: grid;
   grid-template-columns: 1fr 2fr 3fr;
@@ -34,6 +34,7 @@ body {
   margin: 0;
   color: white;
   font-weight: bold;
+  font-size: 1.3rem;
 
   justify-self: center;
 }
@@ -62,7 +63,7 @@ body {
 
 .message-container {
   width: 100vw;
-  height: 60vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -76,6 +77,10 @@ body {
   margin-right: 1rem;
   padding: 0.5rem;
   border-radius: 10px;
+  max-width: 80%;
+
+  /* FIXME: text overflow parent element when to large */
+  overflow: scroll;
 }
 
 .msgHour {
@@ -86,7 +91,7 @@ body {
 .text-container {
   background-color: var(--text-container-bkg-color);
   width: 100vw;
-  height: 5vh;
+  height: 7vh;
 
   display: flex;
   align-items: center;
@@ -99,8 +104,10 @@ body {
 
 .text-input {
   border: 1px solid var(--text-input-border);
-  border-radius: 15px;
+  border-radius: 20px;
   height: 70%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   flex-grow: 1;
 }

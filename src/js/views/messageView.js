@@ -18,6 +18,7 @@ class MessageView {
     );
   }
 
+  // FIXME: the new lines are not rendered
   renderMessage() {
     this._sendButton.addEventListener('click', () => {
       this._renderDay();
