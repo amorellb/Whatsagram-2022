@@ -7,8 +7,9 @@ class MessageView {
   _sendButton = document.querySelector('.send-icon');
   _date = new Date();
 
-  renderDay() {
-    console.log(this._date);
+  _renderDay() {
+    const msgDate = document.querySelector('.msg-date');
+    if (msgDate) return;
     this._daySection.insertAdjacentHTML(
       'afterbegin',
       `<p class='msg-date'>${
@@ -18,13 +19,14 @@ class MessageView {
   }
 
   renderMessage() {
-    this._sendButton.addEventListener('click', e => {
+    this._sendButton.addEventListener('click', () => {
+      this._renderDay();
       const date = new Date();
       this._parentElement.insertAdjacentHTML(
         'beforeend',
         `<p class='msg'>${
           this._textInput.value
-        } ${date.getHours()}:${date.getMinutes()}</p>`
+        } <span class="msgHour">${date.getHours()}:${date.getMinutes()}</span></p>`
       );
       this._textInput.value = '';
     });
