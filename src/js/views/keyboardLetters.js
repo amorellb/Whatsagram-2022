@@ -24,7 +24,6 @@ class KeyboardLetters extends KeyboardView {
         return `<button class="btn CE">CE</button>`;
       case 'del':
         return `<button class="btn del">➡️</button>`;
-      // FIXME: Enter button should add a new line
       case 'enter':
         return `<button class="btn enter">↩️</button>`;
       default:
@@ -56,7 +55,7 @@ class KeyboardLetters extends KeyboardView {
           this._textInput.value.length
         );
       } else if (btn.classList.contains('enter')) {
-        this._textInput.value += ' ';
+        this._textInput.value += '\n';
       } else {
         this._textInput.value += `${btn.textContent}`;
       }

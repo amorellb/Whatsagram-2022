@@ -105,6 +105,11 @@ body {
   flex-grow: 1;
 }
 
+textarea {
+  resize: none;
+  outline: none;
+}
+
 .keyboard-container {
   background-color: var(--keyboard-container-bkg-color);
   width: 100vw;
