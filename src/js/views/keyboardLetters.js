@@ -24,6 +24,7 @@ class KeyboardLetters extends KeyboardView {
         return `<button class="btn CE">CE</button>`;
       case 'del':
         return `<button class="btn del">➡️</button>`;
+      // FIXME: Enter button should add a new line
       case 'enter':
         return `<button class="btn enter">↩️</button>`;
       default:
