@@ -18,16 +18,14 @@ class MessageView {
     );
   }
 
-  // FIXME: the new lines are not rendered
   renderMessage() {
     this._sendButton.addEventListener('click', () => {
+      const textToSend = this._textInput.value.replaceAll('\n', '<br>');
       this._renderDay();
       const date = new Date();
       this._parentElement.insertAdjacentHTML(
         'beforeend',
-        `<p class='msg'>${
-          this._textInput.value
-        } <span class="msgHour">${date.getHours()}:${
+        `<p class='msg'>${textToSend} <span class="msgHour">${date.getHours()}:${
           date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
         }</span></p>`
       );
