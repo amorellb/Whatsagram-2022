@@ -26,8 +26,10 @@ body {
 }
 
 .user-img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--text-input-border);
+  border-radius: 40px;
 
   justify-self: center;
 }
