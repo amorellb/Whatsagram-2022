@@ -1,6 +1,8 @@
 * {
-  --header-bkg-color: darkolivegreen;
-  --text-container-bkg-color: #f1fcde;
+  --header-bkg-color: #99dcf8;
+  --text-container-bkg-color: #f7c896;
+  --message-section-bkg: linear-gradient(0.25turn, #99dcf8, #ebf8e1, #f7c896);
+  --message-bkg-color: #d7dbce;
   --keyboard-container-bkg-color: #faefe8;
   --button-color: aliceblue;
   --text-input-border: #dfe1e5;
@@ -32,7 +34,6 @@ body {
 
 .user-name {
   margin: 0;
-  color: white;
   font-weight: bold;
   font-size: 1.3rem;
 
@@ -40,7 +41,8 @@ body {
 }
 
 .message-section {
-  background-image: url(https://images.unsplash.com/photo-1547623641-d2c56c03e2a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80);
+  background: var(--message-section-bkg);
+
   display: grid;
   grid-template-rows: 0.2fr 2fr;
 }
@@ -52,7 +54,7 @@ body {
 }
 
 .msg-date {
-  background-color: var(--text-container-bkg-color);
+  background-color: var(--message-bkg-color);
   width: 5rem;
   text-align: center;
   padding: 0.2rem;
@@ -72,7 +74,7 @@ body {
 }
 
 .msg {
-  background-color: var(--text-container-bkg-color);
+  background-color: var(--message-bkg-color);
   margin: 0.2rem;
   margin-right: 1rem;
   padding: 0.5rem;

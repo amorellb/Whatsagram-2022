@@ -27,7 +27,9 @@ class MessageView {
         'beforeend',
         `<p class='msg'>${
           this._textInput.value
-        } <span class="msgHour">${date.getHours()}:${date.getMinutes()}</span></p>`
+        } <span class="msgHour">${date.getHours()}:${
+          date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
+        }</span></p>`
       );
       this._textInput.value = '';
     });
