@@ -23,5 +23,22 @@ const switchKbEmoji = function () {
   });
 };
 
+const switchKbSymbols = function () {
+  const keyboard = document.querySelector('.keyboard-container');
+  keyboard.addEventListener('click', e => {
+    const btn = e.target.closest('.btn');
+    if (btn.classList.contains('symbols')) {
+      keyboard.innerHTML = '';
+      btn.classList.replace('symbols', 'letters');
+      keyboardLetters.renderKeyboard(model.symbolBtnValues);
+    } else if (btn.classList.contains('letters')) {
+      keyboard.innerHTML = '';
+      btn.classList.replace('letters', 'symbols');
+      keyboardLetters.renderKeyboard(model.letterBtnValues);
+    }
+  });
+};
+
+switchKbSymbols();
 switchKbEmoji();
 messageView.renderMessage();

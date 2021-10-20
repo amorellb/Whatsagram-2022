@@ -1,5 +1,4 @@
 import KeyboardView from './keyboardView.js';
-import * as model from '../model.js';
 
 class KeyboardEmojis extends KeyboardView {
   _parentElement = document.querySelector('.keyboard-container');

@@ -145,7 +145,8 @@ textarea {
   flex-basis: 25%;
 }
 
-.symbols {
+.symbols,
+.letters {
   flex-basis: 12%;
 }
 

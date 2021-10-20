@@ -6,6 +6,14 @@ export const letterBtnValues = [
   'symbols', 'comma','space', 'point', 'C', 'CE', 'delete', 'del'];
 
 // prettier-ignore
+export const symbolBtnValues = [
+  '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+  '@', '#', '€', '_', '&', '-', '+', '(', ')', '/',
+  '$', '*', '"', '\'', ':', ';', '!', '?', 'enter',
+  'letters', 'comma','space', 'point', 'C', 'CE', 'delete', 'del'
+]
+
+// prettier-ignore
 export const emojiBtnValues = [
     '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '🥲', '☺️',
     '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗',
