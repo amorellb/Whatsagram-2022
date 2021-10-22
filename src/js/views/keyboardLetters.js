@@ -3,48 +3,46 @@ import KeyboardView from './keyboardView.js';
 class KeyboardLetters extends KeyboardView {
   _parentElement = document.querySelector('.keyboard-container');
   _textInput = document.querySelector('.text-input');
-  _flagOnce = false;
-  _flagTwice = false;
+  _kbButtons = document.querySelectorAll('.btn');
+  _isUpper = false;
+  _isUpperDbl = false;
 
-  _generateKbMarkup(btnValue) {
-    switch (btnValue) {
-      case 'shift':
-        return `<button class="btn shift">⬆️</button>`;
-      case 'delete':
-        return `<button class="btn delete">⬅️</button>`;
-      case 'symbols':
-        return `<button class="btn symbols">?123</button>`;
-      case 'letters':
-        return `<button class="btn letters">ABC</button>`;
-      case 'comma':
-        return `<button class="btn comma">,</button>`;
-      case 'space':
-        return `<button class="btn space"></button>`;
-      case 'point':
-        return `<button class="btn point">.</button>`;
-      case 'C':
-        return `<button class="btn C">C</button>`;
-      case 'CE':
-        return `<button class="btn CE">CE</button>`;
-      case 'del':
-        return `<button class="btn del">➡️</button>`;
-      case 'enter':
-        return `<button class="btn enter">↩️</button>`;
-      default:
-        return `<button class="btn letter ${btnValue}">${btnValue}</button>`;
-    }
+  // TODO: To make shift static, put both functions in one with an if statement like: btn.textContent === btn.textContent.toUpperCase()
+  _renderUppercaseLetters() {
+    this._kbButtons.forEach(btn => {
+      console.log(btn);
+      if (btn.classList.contains('letter')) {
+        this._generateKbMarkup(
+          (btn.textContent = btn.textContent.toUpperCase())
+        );
+        console.log('upperRendered');
+      }
+    });
+  }
+
+  _renderLowercaseLetters() {
+    this._kbButtons.forEach(btn => {
+      console.log(this._kbButtons);
+      if (btn.classList.contains('letter')) {
+        this._generateKbMarkup(
+          (btn.textContent = btn.textContent.toLowerCase())
+        );
+        console.log('lowerRendered');
+      }
+    });
   }
 
   writeLettersToInput() {
     this._textInput.value = '';
     this._parentElement.addEventListener('click', e => {
-      const kbButtons = document.querySelectorAll('.btn');
+      e.stopPropagation();
       const btn = e.target.closest('.btn');
 
       if (
         !btn ||
         btn.classList.contains('symbols') ||
-        btn.classList.contains('letters')
+        btn.classList.contains('letters') ||
+        btn.classList.contains('shift')
       )
         return;
       if (btn.classList.contains('space')) {
@@ -62,105 +60,93 @@ class KeyboardLetters extends KeyboardView {
         );
       } else if (btn.classList.contains('enter')) {
         this._textInput.value += '\n';
-      } else if (btn.classList.contains('shift')) {
-        //TODO: 1 click 1 upper, 2 clicks all upper
-        console.log(btn);
-        this._renderUppercaseLetters(kbButtons);
-        // if (
-        //   this._isShiftOnceClicked() &&
-        //   this._isShiftTwiceClicked() &&
-        //   this._checkCaseLetters(kbButtons) === 'upper'
-        // )
-        //   this._renderLowercaseLetters(kbButtons);
       } else {
         this._textInput.value += `${btn.textContent}`;
-        // if (this._isShiftOnceClicked() && !this._isShiftTwiceClicked()) {
-        //   this._renderLowercaseLetters(kbButtons);
-        // }
       }
     });
   }
 
-  _checkCaseLetters(buttons) {
-    let letterCase = '';
-    buttons.forEach(btn => {
-      if (
-        btn.classList.contains('letter') &&
-        btn.textContent == btn.textContent.toUpperCase()
-      ) {
-        console.log('uppercase letters');
-        letterCase = 'upper';
-      }
-      if (
-        btn.classList.contains('letter') &&
-        btn.textContent == btn.textContent.toLowerCase()
-      ) {
-        console.log('lowercase letters');
-        letterCase = 'lower';
-      }
-    });
-    console.log(letterCase);
-    return letterCase;
-  }
-
-  //TODO: check if shift button is once clicked
-  _isShiftOnceClicked() {
-    let flagOnce = false;
+  switchKbSymbols(symbols, letters) {
     this._parentElement.addEventListener('click', e => {
+      e.stopPropagation();
       const btn = e.target.closest('.btn');
-      if (btn.classList.contains('shift')) {
-        if (btn.getAttribute('onclick') === 'true') {
-          btn.setAttribute('onclick', null);
-          flagOnce = false;
-        } else {
-          btn.setAttribute('onclick', 'true');
-          flagOnce = true;
-        }
+      if (!btn) return;
+      if (btn.classList.contains('symbols')) {
+        this._parentElement.innerHTML = '';
+        btn.classList.replace('symbols', 'letters');
+        this.renderKeyboard(symbols);
+      } else if (btn.classList.contains('letters')) {
+        this._parentElement.innerHTML = '';
+        btn.classList.replace('letters', 'symbols');
+        this.renderKeyboard(letters);
       }
     });
-    console.log('flagOnce: ' + flagOnce);
-    return flagOnce;
   }
 
-  //TODO: check if shift button is twice clicked
-  _isShiftTwiceClicked() {
-    let flagTwice = false;
+  upperOndblclickShift() {
     this._parentElement.addEventListener('dblclick', e => {
+      e.stopPropagation();
       const btn = e.target.closest('.btn');
-      if (btn.classList.contains('shift')) {
-        if (btn.getAttribute('ondblclick') === 'true') {
-          btn.setAttribute('ondblclick', null);
-          flagTwice = false;
-        } else {
-          btn.setAttribute('ondblclick', 'true');
-          flagTwice = true;
-        }
+      if (!btn) return;
+      // shift dbl clicked while dbl clicked uppercase false, render uppercase
+      if (btn.classList.contains('shift') && !this._isUpperDbl) {
+        this._renderUppercaseLetters();
+        this._isUpper = true;
+        this._isUpperDbl = true;
+        console.log('isUpper: ' + this._isUpper);
+        console.log('isUpperDbl: ' + this._isUpperDbl);
       }
     });
-    console.log('flagTwice: ' + flagTwice);
-    return flagTwice;
   }
 
-  // TODO: To make shift static, put both functions in one with an if statement like: btn.textContent === btn.textContent.toUpperCase()
-  _renderUppercaseLetters(buttons) {
-    buttons.forEach(btn => {
-      if (btn.classList.contains('letter'))
-        this._generateKbMarkup(
-          (btn.textContent = btn.textContent.toUpperCase())
-        );
-      console.log('upperRendered');
+  upperOnclickShift() {
+    this._parentElement.addEventListener('click', e => {
+      e.stopPropagation();
+      const btn = e.target.closest('.btn');
+      if (!btn) return;
+      // shift clicked while uppercase false, render uppercase
+      if (btn.classList.contains('shift') && !this._isUpper) {
+        this._renderUppercaseLetters();
+        this._isUpper = true;
+        console.log('isUpper: ' + this._isUpper);
+        // shift clicked while uppercase and dbl clicked uppercase true, render lowercase
+      } else if (
+        btn.classList.contains('shift') &&
+        (this._isUpper || this._isUpperDbl)
+      ) {
+        this._renderLowercaseLetters();
+        this._isUpper = false;
+        this._isUpperDbl = false;
+        console.log('isUpper: ' + this._isUpper);
+        console.log('isUpperDbl: ' + this._isUpperDbl);
+      }
+      // a letter clicked while uppercase true and dbl clicked uppercase false, render lowercase
+      if (
+        btn.classList.contains('letter') &&
+        this._isUpper &&
+        !this._isUpperDbl
+      ) {
+        this._renderLowercaseLetters();
+        this._isUpper = false;
+        console.log('isUpper: ' + this._isUpper);
+      }
     });
   }
 
-  _renderLowercaseLetters(buttons) {
-    buttons.forEach(btn => {
-      if (btn.classList.contains('letter'))
-        this._generateKbMarkup(
-          (btn.textContent = btn.textContent.toLowerCase())
-        );
-    });
-    console.log('lowerRendered');
-  }
+  // lowerOnclickShift() {
+  //   this._parentElement.addEventListener('click', e => {
+  //     const btn = e.target.closest('.btn');
+  //     if (
+  //       btn.classList.contains('shift') &&
+  //       this._isUpper &&
+  //       !this._isUpperDbl
+  //     ) {
+  //       this._renderLowercaseLetters();
+  //       this._isUpper = false;
+  //       console.log(this._isUpper);
+  //     }
+  //   });
+  // }
 
   _deleteLastWord(inputString) {
     const array = inputString.split(' ');

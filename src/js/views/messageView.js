@@ -1,11 +1,15 @@
-import { months } from '../model.js';
-
 class MessageView {
-  _parentElement = document.querySelector('.message-container');
+  _parentElement = document.querySelector('.messages-container');
   _daySection = document.querySelector('.msg-date-container');
   _textInput = document.querySelector('.text-input');
   _sendButton = document.querySelector('.send-icon');
   _date = new Date();
+  // prettier-ignore
+  _months = [
+    'Jan', 'Feb', 'Mar',
+    'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep',
+    'Oct', 'Nov', 'Dec']
 
   _renderDay() {
     const msgDate = document.querySelector('.msg-date');
@@ -13,7 +17,7 @@ class MessageView {
     this._daySection.insertAdjacentHTML(
       'afterbegin',
       `<p class='msg-date'>${
-        months[this._date.getMonth()]
+        this._months[this._date.getMonth()]
       } ${this._date.getDate()} ${this._date.getFullYear()}</p>`
     );
   }
@@ -25,9 +29,9 @@ class MessageView {
       const date = new Date();
       this._parentElement.insertAdjacentHTML(
         'beforeend',
-        `<p class='msg'>${textToSend} <span class="msgHour">${date.getHours()}:${
+        `<div class='msg'>${textToSend} <span class="msgHour">${date.getHours()}:${
           date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
-        }</span></p>`
+        }</span></div>`
       );
       this._textInput.value = '';
     });

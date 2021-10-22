@@ -8,15 +8,6 @@ class KeyboardEmojis extends KeyboardView {
     return `<button class="btn ${btnValue}">${btnValue}</button>`;
   }
 
-  renderEmojiKeyboard(values) {
-    values.forEach(btnValue => {
-      this._parentElement.insertAdjacentHTML(
-        'beforeend',
-        this._generateEKbMarkup(btnValue)
-      );
-    });
-  }
-
   _generateIconMarkup(iconType) {
     return `
     <img
@@ -26,8 +17,32 @@ class KeyboardEmojis extends KeyboardView {
     />`;
   }
 
+  _renderEmojiKeyboard(values) {
+    values.forEach(btnValue => {
+      this._parentElement.insertAdjacentHTML(
+        'beforeend',
+        this._generateEKbMarkup(btnValue)
+      );
+    });
+  }
+
   renderIcon(icon) {
     this._iconContainer.innerHTML = this._generateIconMarkup(icon);
+  }
+
+  switchKbEmoji(emojis, letters) {
+    this._iconContainer.addEventListener('click', e => {
+      const icon = e.target.closest('.icon');
+      this.renderIcon(
+        icon.classList.contains('emoji-icon') ? 'keyboard-icon' : 'emoji-icon'
+      );
+      this._parentElement.innerHTML = '';
+      if (icon.classList.contains('emoji-icon')) {
+        this._renderEmojiKeyboard(emojis);
+      } else {
+        this.renderKeyboard(letters);
+      }
+    });
   }
 }
 
