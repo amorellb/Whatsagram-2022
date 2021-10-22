@@ -29,9 +29,9 @@ class MessageView {
       const date = new Date();
       this._parentElement.insertAdjacentHTML(
         'beforeend',
-        `<div class='msg'>${textToSend} <span class="msgHour">${date.getHours()}:${
+        `<div><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
           date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
-        }</span></div>`
+        }</p></div>`
       );
       this._textInput.value = '';
     });

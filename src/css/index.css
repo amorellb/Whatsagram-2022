@@ -3,7 +3,6 @@
   --message-section-bkg: linear-gradient(0.25turn, #99dcf8, #ebf8e1, #f7c896);
   --message-bkg-color: #eafdd1;
   --message-bkg-color2: #ffffff;
-  --text-input-border: #dfe1e5;
   --keyboard-container-bkg-color: #faefe8;
   --button-color: aliceblue;
 }
@@ -99,7 +98,7 @@ header {
   overflow: scroll;
 }
 
-.msg {
+.messages-container div {
   background-color: var(--message-bkg-color);
   margin: 0.2rem;
   margin-right: 1rem;
@@ -107,13 +106,20 @@ header {
   border-radius: 10px;
   max-width: 80%;
 
-  /* FIXME: text overflow parent element when to large */
-  overflow: scroll;
+  display: flex;
 }
 
-.msgHour {
+.msg {
+  margin: 0;
+}
+
+.msg-hour {
+  margin: 0;
+  margin-left: 0.7rem;
   font-size: 0.6rem;
   font-weight: bold;
+
+  align-self: flex-end;
 }
 
 .text-container {

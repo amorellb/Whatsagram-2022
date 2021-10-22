@@ -1,4 +1,4 @@
-import KeyboardView from './keyboardView.js';
+import KeyboardView from './KeyboardView.js';
 
 class KeyboardLetters extends KeyboardView {
   _parentElement = document.querySelector('.keyboard-container');
