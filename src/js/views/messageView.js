@@ -12,29 +12,37 @@ class MessageView {
     'Oct', 'Nov', 'Dec']
 
   _renderDay() {
-    const msgDate = document.querySelector('.msg-date');
-    if (msgDate) return;
-    this._daySection.insertAdjacentHTML(
-      'afterbegin',
-      `<p class='msg-date'>${
-        this._months[this._date.getMonth()]
-      } ${this._date.getDate()} ${this._date.getFullYear()}</p>`
-    );
+    try {
+      const msgDate = document.querySelector('.msg-date');
+      if (msgDate) return;
+      this._daySection.insertAdjacentHTML(
+        'afterbegin',
+        `<p class='msg-date'>${
+          this._months[this._date.getMonth()]
+        } ${this._date.getDate()} ${this._date.getFullYear()}</p>`
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   renderMessage() {
-    this._sendButton.addEventListener('click', () => {
-      const textToSend = this._textInput.value.replaceAll('\n', '<br>');
-      this._renderDay();
-      const date = new Date();
-      this._parentElement.insertAdjacentHTML(
-        'beforeend',
-        `<div><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
-          date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
-        }</p></div>`
-      );
-      this._textInput.value = '';
-    });
+    try {
+      this._sendButton.addEventListener('click', () => {
+        const textToSend = this._textInput.value.replaceAll('\n', '<br>');
+        this._renderDay();
+        const date = new Date();
+        this._parentElement.insertAdjacentHTML(
+          'beforeend',
+          `<div><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
+            date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
+          }</p></div>`
+        );
+        this._textInput.value = '';
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 

@@ -1,10 +1,11 @@
 export default class KeyboardView {
   _generateKbMarkup(btnValue) {
+    if (!btnValue) return;
     switch (btnValue) {
       case 'shift':
-        return `<button class="btn shift">⬆️</button>`;
+        return `<button class="btn shift">⇧</button>`;
       case 'delete':
-        return `<button class="btn delete">⬅️</button>`;
+        return `<button class="btn delete">⇦</button>`;
       case 'symbols':
         return `<button class="btn symbols">?123</button>`;
       case 'letters':
@@ -20,20 +21,25 @@ export default class KeyboardView {
       case 'CE':
         return `<button class="btn CE">CE</button>`;
       case 'del':
-        return `<button class="btn del">➡️</button>`;
+        return `<button class="btn del">⇨</button>`;
       case 'enter':
-        return `<button class="btn enter">↩️</button>`;
+        return `<button class="btn enter">⏎</button>`;
       default:
         return `<button class="btn letter ${btnValue}">${btnValue}</button>`;
     }
   }
 
   renderKeyboard(values) {
-    values.forEach(btnValue => {
-      this._parentElement.insertAdjacentHTML(
-        'beforeend',
-        this._generateKbMarkup(btnValue)
-      );
-    });
+    try {
+      if (!values) return;
+      values.forEach(btnValue => {
+        this._parentElement.insertAdjacentHTML(
+          'beforeend',
+          this._generateKbMarkup(btnValue)
+        );
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 }

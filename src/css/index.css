@@ -143,6 +143,7 @@ header {
   height: 70%;
   padding-left: 1rem;
   padding-right: 1rem;
+  font-size: 1rem;
 
   flex-grow: 1;
 }
@@ -166,6 +167,7 @@ textarea {
   flex: 1 1 10%;
   border: solid 1px var(--button-color);
   background-color: unset;
+  font-size: 1rem;
 }
 
 .btn:active {
@@ -179,6 +181,10 @@ textarea {
 .symbols,
 .letters {
   flex-basis: 12%;
+}
+
+.emojis {
+  font-size: 1.5rem;
 }
 
 .emoji-icon,
