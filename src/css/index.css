@@ -1,11 +1,11 @@
 * {
-  --header-bkg-color: #99dcf8;
-  --text-container-bkg-color: #f7c896;
+  --header-bkg-color: #128c7e;
   --message-section-bkg: linear-gradient(0.25turn, #99dcf8, #ebf8e1, #f7c896);
-  --message-bkg-color: #d7dbce;
+  --message-bkg-color: #eafdd1;
+  --message-bkg-color2: #ffffff;
+  --text-input-border: #dfe1e5;
   --keyboard-container-bkg-color: #faefe8;
   --button-color: aliceblue;
-  --text-input-border: #dfe1e5;
 }
 
 body {
@@ -52,6 +52,7 @@ header {
 .user-name {
   margin: 0;
   font-weight: bold;
+  color: white;
 
   grid-area: name;
   justify-self: center;
@@ -116,7 +117,7 @@ header {
 }
 
 .text-container {
-  background-color: var(--text-container-bkg-color);
+  background: var(--message-section-bkg);
   width: 100vw;
   height: 7vh;
 
@@ -130,7 +131,7 @@ header {
 }
 
 .text-input {
-  border: 1px solid var(--text-input-border);
+  border: none;
   border-radius: 20px;
   height: 70%;
   padding-left: 1rem;
@@ -178,6 +179,6 @@ textarea {
 .keyboard-icon {
   width: 1.5rem;
   height: 1.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }

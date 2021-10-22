@@ -7,7 +7,7 @@ class KeyboardLetters extends KeyboardView {
   _isUpper = false;
   _isUpperDbl = false;
 
-  // TODO: To make shift static, put both functions in one with an if statement like: btn.textContent === btn.textContent.toUpperCase()
+  // FIXME: upper and lower case are not rendered
   _renderUppercaseLetters() {
     this._kbButtons.forEach(btn => {
       console.log(btn);
@@ -20,6 +20,7 @@ class KeyboardLetters extends KeyboardView {
     });
   }
 
+  // FIXME: upper and lower case are not rendered
   _renderLowercaseLetters() {
     this._kbButtons.forEach(btn => {
       console.log(this._kbButtons);
