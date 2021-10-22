@@ -3,35 +3,8 @@ import KeyboardView from './KeyboardView.js';
 class KeyboardLetters extends KeyboardView {
   _parentElement = document.querySelector('.keyboard-container');
   _textInput = document.querySelector('.text-input');
-  _kbButtons = document.querySelectorAll('.btn');
   _isUpper = false;
   _isUpperDbl = false;
-
-  // FIXME: upper and lower case are not rendered
-  _renderUppercaseLetters() {
-    this._kbButtons.forEach(btn => {
-      console.log(btn);
-      if (btn.classList.contains('letter')) {
-        this._generateKbMarkup(
-          (btn.textContent = btn.textContent.toUpperCase())
-        );
-        console.log('upperRendered');
-      }
-    });
-  }
-
-  // FIXME: upper and lower case are not rendered
-  _renderLowercaseLetters() {
-    this._kbButtons.forEach(btn => {
-      console.log(this._kbButtons);
-      if (btn.classList.contains('letter')) {
-        this._generateKbMarkup(
-          (btn.textContent = btn.textContent.toLowerCase())
-        );
-        console.log('lowerRendered');
-      }
-    });
-  }
 
   writeLettersToInput() {
     this._textInput.value = '';
@@ -91,9 +64,9 @@ class KeyboardLetters extends KeyboardView {
       if (!btn) return;
       // shift dbl clicked while dbl clicked uppercase false, render uppercase
       if (btn.classList.contains('shift') && !this._isUpperDbl) {
-        this._renderUppercaseLetters();
         this._isUpper = true;
         this._isUpperDbl = true;
+        this._renderUppercaseLetters();
         console.log('isUpper: ' + this._isUpper);
         console.log('isUpperDbl: ' + this._isUpperDbl);
       }
@@ -107,17 +80,17 @@ class KeyboardLetters extends KeyboardView {
       if (!btn) return;
       // shift clicked while uppercase false, render uppercase
       if (btn.classList.contains('shift') && !this._isUpper) {
-        this._renderUppercaseLetters();
         this._isUpper = true;
+        this._renderUppercaseLetters();
         console.log('isUpper: ' + this._isUpper);
         // shift clicked while uppercase and dbl clicked uppercase true, render lowercase
       } else if (
         btn.classList.contains('shift') &&
         (this._isUpper || this._isUpperDbl)
       ) {
-        this._renderLowercaseLetters();
         this._isUpper = false;
         this._isUpperDbl = false;
+        this._renderLowercaseLetters();
         console.log('isUpper: ' + this._isUpper);
         console.log('isUpperDbl: ' + this._isUpperDbl);
       }
@@ -127,27 +100,34 @@ class KeyboardLetters extends KeyboardView {
         this._isUpper &&
         !this._isUpperDbl
       ) {
-        this._renderLowercaseLetters();
         this._isUpper = false;
+        this._renderLowercaseLetters();
         console.log('isUpper: ' + this._isUpper);
       }
     });
   }
 
-  // lowerOnclickShift() {
-  //   this._parentElement.addEventListener('click', e => {
-  //     const btn = e.target.closest('.btn');
-  //     if (
-  //       btn.classList.contains('shift') &&
-  //       this._isUpper &&
-  //       !this._isUpperDbl
-  //     ) {
-  //       this._renderLowercaseLetters();
-  //       this._isUpper = false;
-  //       console.log(this._isUpper);
-  //     }
-  //   });
-  // }
+  _renderUppercaseLetters() {
+    this._parentElement.childNodes.forEach(btn => {
+      if (btn.classList.contains('letter')) {
+        this._generateKbMarkup(
+          (btn.textContent = btn.textContent.toUpperCase())
+        );
+      }
+    });
+    console.log('upperRendered');
+  }
+
+  _renderLowercaseLetters() {
+    this._parentElement.childNodes.forEach(btn => {
+      if (btn.classList.contains('letter')) {
+        this._generateKbMarkup(
+          (btn.textContent = btn.textContent.toLowerCase())
+        );
+      }
+    });
+    console.log('lowerRendered');
+  }
 
   _deleteLastWord(inputString) {
     const array = inputString.split(' ');
