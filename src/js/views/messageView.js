@@ -29,6 +29,14 @@ class MessageView {
   renderMessage() {
     try {
       this._sendButton.addEventListener('click', () => {
+        if (
+          this._textInput.value === '' ||
+          this._textInput.value === ' ' ||
+          this._textInput.value === '\n'
+        ) {
+          this._textInput.value = '';
+          return;
+        }
         const textToSend = this._textInput.value.replaceAll('\n', '<br>');
         this._renderDay();
         const date = new Date();
