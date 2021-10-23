@@ -2,7 +2,7 @@ class MessageView {
   _parentElement = document.querySelector('.messages-container');
   _daySection = document.querySelector('.msg-date-container');
   _textInput = document.querySelector('.text-input');
-  _sendButton = document.querySelector('.send-icon');
+  _sendIcon = document.querySelector('.send-icon');
   _date = new Date();
   // prettier-ignore
   _months = [
@@ -28,7 +28,11 @@ class MessageView {
 
   renderMessage() {
     try {
-      this._sendButton.addEventListener('click', () => {
+      this._sendIcon.addEventListener('click', () => {
+        if (this._textInput.value === '' || this._textInput.value === '\n') {
+          this._textInput.value = '';
+          return;
+        }
         const textToSend = this._textInput.value.replaceAll('\n', '<br>');
         this._renderDay();
         const date = new Date();
