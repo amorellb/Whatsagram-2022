@@ -37,6 +37,8 @@ class KeyboardLetters extends KeyboardView {
         } else if (btn.classList.contains('enter')) {
           this._textInput.value += '\n';
         } else {
+          // Put the focus on the input when clicking any letter or symbol button
+          this._textInput.focus();
           this._textInput.value += `${btn.textContent}`;
         }
       });
