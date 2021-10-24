@@ -6,8 +6,8 @@
   --message-bkg-color: #eafdd1;
   --message-bkg-color2: #ffffff;
   --message-shadow: lightgray;
-  --keyboard-container-bkg-color: #faefe8;
-  --button-color: aliceblue;
+  --keyboard-container-bkg-color: aliceblue;
+  --button-color: #faefe8;
 }
 
 body {
@@ -172,13 +172,13 @@ textarea {
 
 .btn {
   flex: 1 1 10%;
-  border: solid 1px var(--button-color);
-  background-color: unset;
+  border: solid 1px var(--keyboard-container-bkg-color);
+  background-color: var(--button-color);
   font-size: 1rem;
 }
 
 .btn:active {
-  background-color: var(--button-color);
+  background-color: unset;
 }
 
 .space {
@@ -192,6 +192,7 @@ textarea {
 
 .emojis {
   font-size: 1.5rem;
+  background-color: unset;
 }
 
 .emoji-icon,
