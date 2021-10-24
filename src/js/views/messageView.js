@@ -1,5 +1,5 @@
 class MessageView {
-  _parentElement = document.querySelector('.messages-container');
+  _msgSection = document.querySelector('.messages-container');
   _daySection = document.querySelector('.msg-date-container');
   _textInput = document.querySelector('.text-input');
   _sendButton = document.querySelector('.send-icon');
@@ -40,13 +40,14 @@ class MessageView {
         const textToSend = this._textInput.value.replaceAll('\n', '<br>');
         this._renderDay();
         const date = new Date();
-        this._parentElement.insertAdjacentHTML(
+        this._msgSection.insertAdjacentHTML(
           'beforeend',
           `<div><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
             date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
           }</p></div>`
         );
         this._textInput.value = '';
+        this._msgSection.scrollTop = this._msgSection.scrollHeight;
       });
     } catch (err) {
       console.error(err);
