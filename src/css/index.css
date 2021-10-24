@@ -1,9 +1,11 @@
-* {
+:root {
   --header-bkg-color: #128c7e;
+  --user-name-color: white;
   --message-section-bkg: linear-gradient(0.25turn, #99dcf8, #ebf8e1, #f7c896);
   --date: #e1f2fb;
   --message-bkg-color: #eafdd1;
   --message-bkg-color2: #ffffff;
+  --message-shadow: lightgray;
   --keyboard-container-bkg-color: #faefe8;
   --button-color: aliceblue;
 }
@@ -52,7 +54,7 @@ header {
 .user-name {
   margin: 0;
   font-weight: bold;
-  color: white;
+  color: var(--user-name-color);
 
   grid-area: name;
   justify-self: center;
@@ -87,6 +89,7 @@ header {
   border-radius: 10px;
   font-size: 0.7rem;
   font-weight: bold;
+  filter: drop-shadow(1px 1px 1px var(--message-shadow));
 }
 
 .messages-container {
@@ -106,12 +109,16 @@ header {
   padding: 0.5rem;
   border-radius: 10px;
   max-width: 80%;
+  filter: drop-shadow(1px 1px 1px var(--message-shadow));
 
   display: flex;
 }
 
 .msg {
   margin: 0;
+  /* Break too large words */
+  display: inline-block;
+  word-break: break-word;
 }
 
 .msg-hour {
