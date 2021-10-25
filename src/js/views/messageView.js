@@ -47,7 +47,7 @@ class MessageView {
         const date = new Date();
         this._msgSection.insertAdjacentHTML(
           'beforeend',
-          `<div><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
+          `<div class='msg-sent'><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
             date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
           } </p></div>`
         );
@@ -79,12 +79,12 @@ class MessageView {
   _renderFeedback(ms) {
     try {
       const msgSection = document.querySelector('.messages-container');
-      const feedbackMsg = feedbackMsgs[this._getRandomInt(0, 41)];
+      const feedbackMsg = feedbackMsgs[this._getRandomInt(0, 40)];
       const date = new Date();
       setTimeout(function () {
         msgSection.insertAdjacentHTML(
           'beforeend',
-          `<div class='msg-fb-container'><p class='msg'>${feedbackMsg}</p><p class="msg-hour">${date.getHours()}:${
+          `<div class='msg-answer'><p class='msg'>${feedbackMsg}</p><p class="msg-hour">${date.getHours()}:${
             date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
           } </p></div>`
         );
