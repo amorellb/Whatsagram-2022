@@ -15,6 +15,7 @@ body {
   margin: 0;
   display: grid;
   height: 100vh;
+  width: 100vw;
 }
 
 header {
@@ -23,7 +24,7 @@ header {
 
 .header-container {
   background-color: var(--header-bkg-color);
-  width: 100vw;
+  /* width: 100vw; */
   height: 100%;
 
   display: grid;
@@ -93,7 +94,7 @@ header {
 }
 
 .messages-container {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -142,7 +143,7 @@ header {
 
 .text-container {
   background: var(--message-section-bkg);
-  width: 100vw;
+  /* width: 100vw; */
   height: 7vh;
 
   display: flex;
@@ -172,7 +173,7 @@ textarea {
 
 .keyboard-container {
   background-color: var(--keyboard-container-bkg-color);
-  width: 100vw;
+  /* width: 100vw; */
   height: 25vh;
 
   display: flex;
@@ -212,4 +213,12 @@ textarea {
   height: 1.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+@media (min-width: 361px) {
+  body {
+    width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
