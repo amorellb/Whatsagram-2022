@@ -1,3 +1,5 @@
+import { feedbackMsgs } from '../data.js';
+
 class MessageView {
   _msgSection = document.querySelector('.messages-container');
   _daySection = document.querySelector('.msg-date-container');
@@ -30,6 +32,7 @@ class MessageView {
 
   renderMessage() {
     try {
+      const ms = this._getRandomMilliseconds(0, 5);
       this._sendButton.addEventListener('click', () => {
         if (
           this._textInput.value === '' ||
@@ -48,7 +51,8 @@ class MessageView {
             date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
           } </p></div>`
         );
-        this._renderCheckMark();
+        this._renderCheckMark(ms);
+        this._renderFeedback(ms);
         this._textInput.value = '';
         this._msgSection.scrollTop = this._msgSection.scrollHeight;
       });
@@ -57,19 +61,43 @@ class MessageView {
     }
   }
 
-  _renderCheckMark() {
+  _renderCheckMark(ms) {
     try {
       const msg = document.querySelectorAll('.msg-hour');
       const index = msg.length - 1;
       setTimeout(function () {
         msg[index].insertAdjacentHTML('beforeend', '✓');
-      }, 1000);
+      }, ms);
       setTimeout(function () {
         msg[index].insertAdjacentHTML('beforeend', '✓');
-      }, this._milliseconds[this._getRandomInt(0, 5)]);
+      }, this._ms);
     } catch (err) {
       console.error(err);
     }
+  }
+
+  _renderFeedback(ms) {
+    try {
+      const msgSection = document.querySelector('.messages-container');
+      const feedbackMsg = feedbackMsgs[this._getRandomInt(0, 41)];
+      const date = new Date();
+      setTimeout(function () {
+        msgSection.insertAdjacentHTML(
+          'beforeend',
+          `<div class='msg-fb-container'><p class='msg'>${feedbackMsg}</p><p class="msg-hour">${date.getHours()}:${
+            date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
+          } </p></div>`
+        );
+        msgSection.scrollTop = msgSection.scrollHeight;
+      }, ms + 1000);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  _getRandomMilliseconds(min, max) {
+    const randomInt = this._getRandomInt(min, max);
+    return this._milliseconds[randomInt];
   }
 
   _getRandomInt(min, max) {
