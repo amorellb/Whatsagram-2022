@@ -3,6 +3,7 @@ class MessageView {
   _daySection = document.querySelector('.msg-date-container');
   _textInput = document.querySelector('.text-input');
   _sendButton = document.querySelector('.send-icon');
+  _checkMark = '';
   _date = new Date();
   // prettier-ignore
   _months = [
@@ -10,6 +11,7 @@ class MessageView {
     'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep',
     'Oct', 'Nov', 'Dec']
+  _milliseconds = [2000, 3000, 4000, 5000];
 
   _renderDay() {
     try {
@@ -44,14 +46,34 @@ class MessageView {
           'beforeend',
           `<div><p class='msg'>${textToSend}</p><p class="msg-hour">${date.getHours()}:${
             date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
-          }</p></div>`
+          } </p></div>`
         );
+        this._renderCheckMark();
         this._textInput.value = '';
         this._msgSection.scrollTop = this._msgSection.scrollHeight;
       });
     } catch (err) {
       console.error(err);
     }
+  }
+
+  _renderCheckMark() {
+    try {
+      const msg = document.querySelectorAll('.msg-hour');
+      const index = msg.length - 1;
+      setTimeout(function () {
+        msg[index].insertAdjacentHTML('beforeend', '✓');
+      }, 1000);
+      setTimeout(function () {
+        msg[index].insertAdjacentHTML('beforeend', '✓');
+      }, this._milliseconds[this._getRandomInt(0, 5)]);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  _getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 }
 
