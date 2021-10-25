@@ -215,9 +215,9 @@ textarea {
   padding-right: 0.5rem;
 }
 
-@media (min-width: 361px) {
+@media (min-width: 500px) {
   body {
-    width: 360px;
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
   }
