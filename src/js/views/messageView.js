@@ -13,7 +13,6 @@ class MessageView {
     'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep',
     'Oct', 'Nov', 'Dec']
-  // _milliseconds = 2000;
   _milliseconds = [
     1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000,
   ];
@@ -64,7 +63,6 @@ class MessageView {
   }
 
   _renderCheckMark(ms) {
-    console.log(ms);
     try {
       const msg = document.querySelectorAll('.msg-hour');
       const index = msg.length - 1;
@@ -80,7 +78,6 @@ class MessageView {
   }
 
   _renderFeedback(ms) {
-    console.log(ms);
     try {
       const msgSection = document.querySelector('.messages-container');
       const feedbackMsg = feedbackMsgs[this._getRandomInt(0, 40)];
