@@ -13,7 +13,10 @@ class MessageView {
     'Apr', 'May', 'Jun',
     'Jul', 'Aug', 'Sep',
     'Oct', 'Nov', 'Dec']
-  _milliseconds = [2000, 3000, 4000, 5000];
+  // _milliseconds = 2000;
+  _milliseconds = [
+    1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000,
+  ];
 
   _renderDay() {
     try {
@@ -32,7 +35,6 @@ class MessageView {
 
   renderMessage() {
     try {
-      const ms = this._getRandomMilliseconds(0, 5);
       this._sendButton.addEventListener('click', () => {
         if (
           this._textInput.value === '' ||
@@ -51,8 +53,8 @@ class MessageView {
             date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
           } </p></div>`
         );
-        this._renderCheckMark(ms);
-        this._renderFeedback(ms);
+        this._renderCheckMark(this._milliseconds[this._getRandomInt(0, 5)]);
+        this._renderFeedback(this._milliseconds[this._getRandomInt(4, 11)]);
         this._textInput.value = '';
         this._msgSection.scrollTop = this._msgSection.scrollHeight;
       });
@@ -62,21 +64,23 @@ class MessageView {
   }
 
   _renderCheckMark(ms) {
+    console.log(ms);
     try {
       const msg = document.querySelectorAll('.msg-hour');
       const index = msg.length - 1;
       setTimeout(function () {
         msg[index].insertAdjacentHTML('beforeend', '✓');
-      }, ms);
+      }, ms - 1000);
       setTimeout(function () {
         msg[index].insertAdjacentHTML('beforeend', '✓');
-      }, this._ms);
+      }, ms);
     } catch (err) {
       console.error(err);
     }
   }
 
   _renderFeedback(ms) {
+    console.log(ms);
     try {
       const msgSection = document.querySelector('.messages-container');
       const feedbackMsg = feedbackMsgs[this._getRandomInt(0, 40)];
@@ -93,11 +97,6 @@ class MessageView {
     } catch (err) {
       console.error(err);
     }
-  }
-
-  _getRandomMilliseconds(min, max) {
-    const randomInt = this._getRandomInt(min, max);
-    return this._milliseconds[randomInt];
   }
 
   _getRandomInt(min, max) {
