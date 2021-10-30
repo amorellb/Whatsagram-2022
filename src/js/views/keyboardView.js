@@ -1,4 +1,13 @@
+/**
+ * A class to generate the keyboard markup and render it. Its methods are inherited by other classes.
+ */
 export default class KeyboardView {
+  /**
+   * A private method to generate the buttons that will be rendered as a keyboard. Depending on the button value,
+   * it will return an HTML element or another.
+   * @param {String} btnValue A string that represents the button value.
+   * @returns A HTML button element.
+   */
   _generateKbMarkup(btnValue) {
     if (!btnValue) return;
     switch (btnValue) {
@@ -29,6 +38,10 @@ export default class KeyboardView {
     }
   }
 
+  /**
+   * A method that renders the keyboard buttons.
+   * @param {Array} values An array that contains all the keyboard button values.
+   */
   renderKeyboard(values) {
     try {
       if (!values) return;

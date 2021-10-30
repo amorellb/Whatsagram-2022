@@ -22,7 +22,7 @@ export const emojiBtnValues = [
   ]
 
 // prettier-ignore
-export const feedbackMsgs = [
+export const answerMsgs = [
   'No hay viaje más bonito que la vida.',
   'Cuídame y no olvides que valgo mi peso en oro.',
   'La felicidad está en el interior.',
