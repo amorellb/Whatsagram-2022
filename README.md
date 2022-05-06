@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e420694b-3636-414d-ab67-84ae7df0e9d9/deploy-status)](https://app.netlify.com/sites/flamboyant-stonebraker-a2f3a7/deploys)
+[![wakatime](https://wakatime.com/badge/user/0314f862-a840-4097-a5f5-e3b2f2c099f9/project/a8defea9-7318-4478-8a06-3edf72128769.svg)](https://wakatime.com/badge/user/0314f862-a840-4097-a5f5-e3b2f2c099f9/project/a8defea9-7318-4478-8a06-3edf72128769)
+
 # Whatsagram-2022
 
 Aplicación de mensajería.
